@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+<body class="bg-danger" style="background: linear-gradient(to right, #8d2222, #ff4d4d);">
+    <main>
+        <div class="container">
+            <div class="card mt-5 w-50 mx-auto">
+                <div class="card-header text-center">
+                    {% block card_header %}{% endblock %}
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 p-5">
+                            {% block content %}{% endblock %}
+                        </div>
+                        <div class="col-md-6 border-start text-center ">
+                            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="" class="w-100">
+                            <h2>Redes Sociales</h2>
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col-md-6">
+                                    <a href="https://www.facebook.com/"><img src="{{ url_for('static', filename='img/facebook.png') }}" alt="" class="w-25"></a>
+                                </div>
+                                <div class="col-md-6">
+                                    <a href="https://www.instagram.com/"><img src="{{ url_for('static', filename='img/instagram.png') }}" alt="" class="w-25"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+</html>

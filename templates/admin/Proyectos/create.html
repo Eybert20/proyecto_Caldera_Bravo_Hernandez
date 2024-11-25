@@ -1,0 +1,71 @@
+{% extends 'app.html'  %}
+
+{% block title %}
+Aplicacion - Resgistar Nuevo Proyecto
+{% endblock %}
+
+{% block card_header %}
+Aplicacion - Resgistar Nuevo Proyecto
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="alert alert-info shadow">
+            <p>
+                nuestra plataforma es una solucion integral diseñada para la optimizacion de proyectos de construccion.
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2>Registrar Nuevo Proyecto</h2>
+            </div>
+            <div class="card-body">
+                <a href="/proyecto" class="btn btn-lg my-3">Regresar</a>
+                <form action="/proyecto/store" method="POST">
+                    <div class="alert alert-info">
+                        <p>
+                           Los campos con (*)  son obligatorios.
+                        </p>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="titulo">Titulo del Proyecto *</label>
+                        <input type="text" name="titulo" id="titulo" class="form-control" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="descripcion">Descripcion del Proyecto *</label>
+                        <textarea type="text" name="descripcion" id="descripcion" class="form-control" required></textarea>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="categoria_id">Categoria del Proyecto *</label>
+                        <select type="text" name="categoria_id" id="categoria_id" class="form-control" required>
+                            <option value>--- Seleccione una Categoria ---</option>
+                            {% for categoria in categorias %}
+                                <option value="{{categoria.id}}">{{categoria.nombre}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group mb-3 row">
+                        <div class="col-6">
+                            <label for="fecha_inicio">Fecha de Inicio *</label>
+                            <input type="date" name="fecha_inicio" id="fecha_inicio" class="form-control" required>
+                        </div>        
+                        <div class="col-6">
+                            <label for="fecha_fin">Fecha de Fin *</label>
+                            <input type="date" name="fecha_fin" id="fecha_fin" class="form-control" required>
+                        </div>        
+                    </div>
+                    <div class="form-group mb-3">
+                      <input type="hidden" name="usuario_id" value="{{current_user.id}}">
+                      <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+                    </div>
+                </form>
+                
+                
+            </div>
+        </div>
+        
+    </div>
+{% endblock %}}

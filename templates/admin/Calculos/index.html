@@ -1,0 +1,107 @@
+{% extends 'app.html'  %}
+
+{% block title %}
+Aplicacion - Calculos del Proyecto
+{% endblock %}
+
+{% block card_header %}
+Aplicacion - Calculos del Proyecto
+{% endblock %}
+
+{% block content %}
+<!-- Modal -->
+<div class="modal fade" id="create-calculo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+             <h5 class="modal-title" id="exampleModalLabel">Registrar neva Calculo</h5>
+             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/calculo/store" method="POST">
+                    <div class="alert alert-info">
+                        <p>
+                            todos los campos con (*) son obligatorios
+                        </p>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="formula_id">formulas *</label>
+                        <select type="text" name="formula_id" id="formula_id" class="form-control" required>
+                            <option value>--- Seleccione una Formula ---</option>
+                            {% for formula in formulas %}
+                                <option value="{{formula.id}}">{{formula.nombre}} -> {{formula.expresion}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="parametros">parametros *</label>
+                        <input type="text" name="parametros" id="parametros" class="form-control" required placeholder="Ejemplo:1,1">
+                        <small>los parametros deben estar separados por comas</small>
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="proyecto_id" value="{{proyecto_id}}">
+                        <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="alert alert-info shadow">
+        <p>
+            nuestra plataforma es una solucion integral diseñada para la optimizacion de proyectos de construccion.
+        </p>
+    </div>
+</div>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2>Calculos del Proyectos</h2>
+            </div>
+            <div class="card-body">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-info" role="alert">
+                                {{message}}
+                                <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <a href="#" class="btn btn-dark btn-lg my-3" data-bs-toggle="modal" data-bs-target="#create-calculo">Registrar Nuevo Calculo</a>
+                <a href="/proyecto" class="btn">Regresar</a>
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Parametros</th>
+                            <th>Resultado</th>
+                            <th>Acciones</th>
+                        </tr>
+                        <tbody>
+                            {% for calculo in calculos %}
+                                <tr>
+                                    <td>{{ calculo['parametros']}}</td>
+                                    <td>{{ calculo['resultado']}}</td>
+                                    <td>
+                                        <a href="/calculo/destroy/{{calculo['id']}}" class="btn btn-danger">Eliminar</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </thead>
+                </table>
+                
+            </div>
+        </div>
+        
+    </div>
+
+{% endblock %}

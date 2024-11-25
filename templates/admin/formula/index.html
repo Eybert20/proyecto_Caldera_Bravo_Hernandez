@@ -1,0 +1,66 @@
+{% extends 'app.html'  %}
+
+{% block title %}
+Aplicacion - Formulacion
+{% endblock %}
+
+{% block card_header %}
+Aplicacion - Formulacios
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="alert alert-info shadow">
+            <p>
+                nuestra plataforma es una solucion integral diseñada para la optimizacion de proyectos de construccion.
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2>Formulacios</h2>
+            </div>
+            <div class="card-body">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-info" role="alert">
+                                {{message}}
+                                <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <a href="/formula/create" class="btn btn-dark btn-lg my-3">Registrar neva formula</a>
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nonmbre de la formula</th>
+                            <th>Descripción de la formula</th>
+                            <th>Expresion</th>
+                            <th>Acciones</th>
+                        </tr>
+                        <tbody>
+                            {% for formula in formula_list %}
+                                <tr>
+                                    <td>{{ formula['nombre']}}</td>
+                                    <td>{{ formula['descripcion']}}</td>
+                                    <td>{{ formula['expresion']}}</td>
+                                    <td>
+                                        <a href="#" class="btn btn-info">Editar</a>
+                                        <a href="/formula/destroy/{{formula['id']}}" class="btn btn-danger">Eliminar</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </thead>
+                </table>
+                
+            </div>
+        </div>
+        
+    </div>
+
+{% endblock %}}

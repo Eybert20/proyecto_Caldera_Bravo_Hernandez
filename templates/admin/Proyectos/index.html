@@ -1,0 +1,70 @@
+{% extends 'app.html'  %}
+
+{% block title %}
+Aplicacion - Proyectos
+{% endblock %}
+
+{% block card_header %}
+Aplicacion - Proyectos
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="alert alert-info shadow">
+            <p>
+                nuestra plataforma es una solucion integral diseñada para la optimizacion de proyectos de construccion.
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2> Proyectos</h2>
+            </div>
+            <div class="card-body">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-info" role="alert">
+                                {{message}}
+                                <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <a href="/proyecto/create" class="btn btn-dark btn-lg my-3">Registrar nevo Proyecto</a>
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Titulo</th>
+                            <th>Descripción</th>
+                            <th>Fecha de Inicio</th>
+                            <th>Fecha de Finalizacion</th>
+                            <th>Acciones</th>
+                        </tr>
+                        <tbody>
+                            {% for proyecto in proyectos %}
+                                <tr>
+                                    <td>{{ proyecto['titulo']}}</td>
+                                    <td>{{ proyecto['descripcion']}}</td>
+                                    <td>{{ proyecto['fecha_inicio']}}</td>
+                                    <td>{{ proyecto['fecha_fin']}}</td> 
+                                    <td>
+                                        <a href="#" class="btn btn-dark">Detalles</a>
+                                        <a href="/calculo/{{proyecto['id']}}" class="btn btn-dark">Calculos</a>
+                                        <a href="#" class="btn btn-warning">Editar</a>
+                                        <a href="/proyecto/destroy/{{proyecto['id']}}" class="btn btn-danger">Eliminar</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </thead>
+                </table>
+                
+            </div>
+        </div>
+        
+    </div>
+
+{% endblock %}}

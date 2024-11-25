@@ -1,0 +1,50 @@
+{% extends 'app.html'  %}
+
+{% block title %}
+Aplicacion - Registrar Nueva Formula
+{% endblock %}
+
+{% block card_header %}
+Aplicacion - Registrar Nueva Formula
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="alert alert-info shadow">
+            <p>
+                nuestra plataforma es una solucion integral diseñada para la optimizacion de proyectos de construccion.
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2>Registrar Nueva formula</h2>
+            </div>
+            <div class="card-body">
+                <a href="/formula" class="btn btn-lg my-3">Regresar</a>
+                <form action="/formula/store" method="POST">
+                    <div class="form-group">
+                        <label for="nombre">Nombre de la formula</label>
+                        <input type="text" name="nombre" id="nombre" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion">Descripcion de la formula</label>
+                        <input type="text" name="descripcion" id="descripcion" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="expresion">Expresion de la formula</label>
+                        <input type="text" name="expresion" id="expresion" class="form-control">
+                    </div>
+                    <div class="form-group mt-4">
+                      <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+                    </div>
+                </form>
+                
+                
+            </div>
+        </div>
+        
+    </div>
+{% endblock %}}

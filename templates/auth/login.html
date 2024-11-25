@@ -1,0 +1,36 @@
+{% extends 'auth.html' %}
+
+{% block title %}
+Inicio de Sesion
+{% endblock %}
+
+{% block card_header %}
+Inicio de Sesion
+{% endblock %}
+
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-danger" role="alert">
+                {{ message }}
+                <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <h2>Inicia sesion en tu cuenta</h2>
+    <form method="POST" action="/login">
+        <div class="form-group mb-3">
+            <label for="email">Correo electronico</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <hr>
+        <button type="submit" class="btn btn-outline-danger mt-3 btn-lg w-100">Ingresar</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'app.html'  %}
+
+{% block title %}
+Aplicacion - Crear Nuevos Calculos
+{% endblock %}
+
+{% block card_header %}
+Aplicacion - Crear Nuevos Calculos
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="alert alert-info shadow">
+            <p>
+                nuestra plataforma es una solucion integral diseñada para la optimizacion de proyectos de construccion.
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2>Crear Nuevos Calculos</h2>
+            </div>
+            <div class="card-body">
+                <a href="/calculo" class="btn btn-lg my-3">Regresar</a>
+                <form action="/calculo/store" method="POST">
+                    <!-- ??????????-->
+                    <div class="form-group">
+                        <label for="nombre">Nombre de la formula</label>
+                        <input type="text" name="nombre" id="nombre" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion">Descripcion de la Categoria</label>
+                        <input type="text" name="descripcion" id="descripcion" class="form-control">
+                    </div>
+                    <div class="form-group mt-4">
+                      <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+                    </div>
+                </form>
+                
+                
+            </div>
+        </div>
+        
+    </div>
+{% endblock %}}

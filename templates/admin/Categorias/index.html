@@ -1,0 +1,64 @@
+{% extends 'app.html'  %}
+
+{% block title %}
+Aplicacion - Categorias de Proyectos
+{% endblock %}
+
+{% block card_header %}
+Aplicacion - Categorias de Proyectos
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="alert alert-info shadow">
+            <p>
+                nuestra plataforma es una solucion integral diseñada para la optimizacion de proyectos de construccion.
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2>Categorias de Proyectos</h2>
+            </div>
+            <div class="card-body">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-info" role="alert">
+                                {{message}}
+                                <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <a href="/categorias/create" class="btn btn-dark btn-lg my-3">Registrar neva Categoria</a>
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nonmbre de la Categoria</th>
+                            <th>Descripción de la Categoria</th>
+                            <th>Acciones</th>
+                        </tr>
+                        <tbody>
+                            {% for categoria in categorias_list %}
+                                <tr>
+                                    <td>{{ categoria['nombre']}}</td>
+                                    <td>{{ categoria['descripcion']}}</td>
+                                    <td>
+                                        <a href="#" class="btn btn-info">Editar</a>
+                                        <a href="/categorias/destroy/{{categoria['id']}}" class="btn btn-danger">Eliminar</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </thead>
+                </table>
+                
+            </div>
+        </div>
+        
+    </div>
+
+{% endblock %}}

@@ -1,0 +1,74 @@
+{% extends 'app.html'  %}
+
+{% block title %}
+Aplicacion - home
+{% endblock %}
+
+{% block card_header %}
+Aplicacion - home
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="alert alert-info shadow">
+            <p>
+                nuestra plataforma es una solucion integral diseñada para la optimizacion de proyectos de construccion.
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2>Herramientas</h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                              <h5 class="card-title">Proyectos</h5>
+                              <h6 class="card-subtitle mb-2 text-muted">Resumen de Proyectos</h6>
+                              <p class="card-text">Accede rápidamente a información sobre tus proyectos.</p>
+                              <a href="/proyecto" class="btn btn-primary">Ingresar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                              <h5 class="card-title">Formulacion</h5>
+                              <h6 class="card-subtitle mb-2 text-muted">Formulación de Proyectos</h6>
+                              <p class="card-text">Descubre el proceso de formulación de nuestros proyectos.</p>
+                              <a href="/formula" class="btn btn-primary">Ingresar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                              <h5 class="card-title">Categorias</h5>
+                              <h6 class="card-subtitle mb-2 text-muted">Categorías de Proyectos</h6>
+                              <p class="card-text">Ingresa para descubrir proyectos según tus intereses.</p>
+                              <a href="/categorias" class="btn btn-primary">Ingresar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                              <h5 class="card-title">Usuarios</h5>
+                              <h6 class="card-subtitle mb-2 text-muted">Gestión de Usuarios</h6>
+                              <p class="card-text">Tu panel de control aqui vas a encontrar tu proyectos</p>
+                              <a href="#" class="btn btn-primary">Ingresar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+  
+            </div>
+        </div>
+        
+    </div>
+
+{% endblock %}}
